@@ -15,7 +15,7 @@ const _endpoint_channels = "/channels/" + _channel_id;
 const _endpoint_videos = _endpoint_channels + "/videos";
 
 class CallVimeoApi {
-    
+
     /* Mostly Get requests */
     request (endpoint, extra_url) {
         return new Promise (function(resolve, reject) {
@@ -32,6 +32,7 @@ class CallVimeoApi {
             })
             .then(response => response.json())
             .then(data => {
+                console.log("Result");
                 console.log(data);
                 resolve( data );
             })
@@ -53,17 +54,17 @@ class Channels {
         this._callVimeoAPI = new CallVimeoApi;
 
     }
-    
+
     getChannel () {
 
         return this._callVimeoAPI.request(_endpoint_channels);
-   
+
     }
 
     getChannelCategories () {
 
         return this._callVimeoAPI.request(_endpoint_channels + "/categories");
-    
+
     }
 
     getChannelVideos () {
@@ -90,19 +91,19 @@ class Videos {
 
         this._callVimeoAPI = new CallVimeoApi;
         this._channels = new Channels;
-    
+
     }
 
     getVideo (video_id_tmp) {
 
         this._callVimeoAPI.request(_endpoint_videos + "/" + video_id_tmp);
-    
+
     }
 
     getAllVideos () {
 
         return this._channels.getChannelVideos();
-    
+
     }
 
 
@@ -115,18 +116,14 @@ export default class Vimeo {
 
         this.videos = new Videos;
         this.channels = new Channels;
-    
+
     }
 
     helloWorld () {
 
         return "Olá mundo!";
-    
+
     }
 
 
 }
-
-
-
-

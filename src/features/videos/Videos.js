@@ -19,6 +19,7 @@ export class Videos extends Component {
     super();
     this.state = {
       videos:[],
+      categories: [],
       selected_video: [],
     }
   }
@@ -27,13 +28,19 @@ export class Videos extends Component {
     const vimeo = new Vimeo;
     let videos = vimeo.channels.getChannelVideos()
     .then(videos => {
-      this.setState({videos: videos})
+      this.setState({videos: videos});
     })
     .catch(error => {
       console.log(error);
-    })
+    });
 
-    
+    let categories = vimeo.channels.getChannelCategories()
+    .then(categories => {
+      console.log("Categories");
+      console.log(categories);
+    });
+
+
   }
 
   select_video = (video) => {
@@ -49,12 +56,12 @@ export class Videos extends Component {
 
     videos.data.forEach((video, index) => {
       ( table.push (
-        <div className="col s6 m6">
+        <div className="col s12 m6">
           <Individual select_video={this.select_video} video={video} />
         </div>
       ))
     });
-    
+
     return table;
   }
 

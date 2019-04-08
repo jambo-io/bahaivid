@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Logo from '../../images/jambo-io-logo@2x.png';
+const M = window.M;
+M.AutoInit;
+const options = {};
 
 export default class NavBar extends Component {
   static propTypes = {
@@ -15,14 +18,21 @@ export default class NavBar extends Component {
     }
   }
 
+  componentDidMount () {
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, options);
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
-        <nav className="nav-extended lime lighten-5 z-depth-5">
+        <nav className="nav-extended nav-extended-custom">
           <div className="nav-wrapper">
-            <img src={Logo} height={100} className="brand-logo" />
-            <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li><a><img src={Logo} height={50}  /></a></li>
               <li><a href="sass.html"></a></li>
               <li><a href="badges.html">Registrar</a></li>
               <li><a href="collapsible.html">Login</a></li>
