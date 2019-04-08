@@ -12,9 +12,9 @@ export default class Individual extends Component {
 
   constructor(props) {
     super(props);
-    
+
   }
-  
+
   openModal = (e) => {
     this.props.select_video(this.props.video);
   }
@@ -38,7 +38,7 @@ export default class Individual extends Component {
           <span>{this.props.video ? this.props.video.name : null }</span>
           </div>
         </div>
-      
+
       </React.Fragment>
     );
   }
@@ -51,7 +51,7 @@ export class Modal extends Component {
   constructor (props) {
     super(props);
 
-    
+
     this.state = {
       started: false,
       options: {},
@@ -61,13 +61,13 @@ export class Modal extends Component {
   onPlay = (data) => {
     // Function logic goes here
   };
-  
-  
+
+
 
   componentDidUpdate (prevProps) {
     if(this.props !== prevProps) {
       this.setState({mounted: true});
-      
+
       if(this.props.video) {
         const video_uri = this.props.video.uri;
         if(typeof video_uri !== "undefined") {
@@ -97,14 +97,14 @@ export class Modal extends Component {
 
     let options = {
       id: '326720438',
-      width: 600,
+      width: '90vh',
       responsive: true,
       byline: false,
       playsinline: false,
       autoplay: true,
     }
     this.player = new vimeo_player('1', options);
-    
+
     options = {
       opacity: .9,
       inDuration: 400,
@@ -124,13 +124,12 @@ export class Modal extends Component {
   render() {
     return (
       <React.Fragment>
-        <button onClick={e => this.handleClick(e)} >Modal</button>
           <div className="modal-dialog">
           <div id="modal1" className="modal-custom" ref={el => (this.modal = el)}>
               <div className="video-container">
 
                 <div id='1'></div>
-                
+
               </div>
             </div>
             </div>

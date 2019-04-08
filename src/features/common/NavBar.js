@@ -38,7 +38,7 @@ export default class NavBar extends Component {
               <li><a href="collapsible.html">Login</a></li>
             </ul>
           </div>
-          <div className="navbar-nav-content menu-custom indigo-text text-darken-4">
+          <div className="navbar-nav-content menu-custom indigo-text text-darken-4 hide-on-med-and-down">
             <ul className="tabs">
               <li className="tab"><a href="#test1">Vídeos</a></li>
               <li className="tab"><a className="active" href="#test2">Fotos</a></li>
@@ -51,6 +51,8 @@ export default class NavBar extends Component {
         <ul className="sidenav" id="mobile-demo">
           <li><a href="badges.html">Registrar</a></li>
           <li><a href="collapsible.html">Login</a></li>
+
+
         </ul>
 
       </React.Fragment>
